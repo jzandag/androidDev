@@ -3,6 +3,7 @@ package com.electives.game.screens;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -30,6 +31,9 @@ public class SplashScreen implements Screen {
     }
     @Override
     public void show() {
+        //apply preferences
+        Gdx.graphics.setVSync(SettingsScreen.vSync());
+
         tweenManager = new TweenManager();
         Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 
@@ -38,13 +42,13 @@ public class SplashScreen implements Screen {
         splash.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
         Tween.set(splash, SpriteAccessor.ALPHA).target(0).start(tweenManager);
-        Tween.to(splash, SpriteAccessor.ALPHA,1.5f).target(1).repeatYoyo(1,1.5f).setCallback(new TweenCallback() {
+        Tween.to(splash, SpriteAccessor.ALPHA,0.5f).target(1).repeatYoyo(1,0.5f).setCallback(new TweenCallback() {
             @Override
             public void onEvent(int type, BaseTween<?> source) {
                 game.setScreen(new MainMenuScreen(game));
             }
         }).start(tweenManager);
-
+        tweenManager.update(Float.MIN_VALUE);
     }
 
     @Override
@@ -52,16 +56,17 @@ public class SplashScreen implements Screen {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        tweenManager.update(delta);
 
         game.batch.begin();
         splash.draw(game.batch);
         game.batch.end();
 
+        tweenManager.update(delta);
     }
 
     @Override
     public void resize(int width, int height) {
+        splash.setSize(width,height);
 
     }
 
@@ -77,7 +82,7 @@ public class SplashScreen implements Screen {
 
     @Override
     public void hide() {
-
+        //dispose();
     }
 
     @Override

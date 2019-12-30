@@ -31,7 +31,8 @@ public class Elective4 extends Game {
 
 	@Override
 	public void dispose () {
-		super.dispose();
+		//super.dispose();
+		//batch.dispose();
 	}
 
 	@Override
