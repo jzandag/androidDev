@@ -76,12 +76,12 @@ public class SettingsScreen implements Screen {
 
         Gdx.input.setInputProcessor(stage);
 
-        skin = new Skin(Gdx.files.internal("ui/menuSkin.json"), new TextureAtlas("ui/atlas.pack"));
+        skin = new Skin(Gdx.files.internal("ui/settings.json"), new TextureAtlas("ui/tr.pack"));
 
         table = new Table(skin);
         table.setFillParent(true);
 
-        final CheckBox vSyncCheckBox = new CheckBox("vSync", skin);
+        final CheckBox vSyncCheckBox = new CheckBox(" vSync", skin);
         vSyncCheckBox.setChecked(vSync());
 
         final TextField levelDirectoryInput = new TextField(levelDirectory().path(), skin); // creating a new TextField with the current level directory already written in it
@@ -130,8 +130,8 @@ public class SettingsScreen implements Screen {
 
         // putting everything in the table
         table.add(new Label("SETTINGS", skin)).spaceBottom(50).colspan(2).row();
-        table.add("level directory").row();
-        table.add(levelDirectoryInput).fillX().spaceBottom(15).row();
+//        table.add("level directory").row();
+//        table.add(levelDirectoryInput).fillX().spaceBottom(15).row();
         table.add(vSyncCheckBox).expandY().top().row();
         table.add(back).bottom().right();
         stage.addActor(table);

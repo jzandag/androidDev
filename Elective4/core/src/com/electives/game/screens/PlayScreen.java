@@ -5,23 +5,24 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.ChainShape;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.electives.game.Elective4;
-import com.electives.game.InputController;
+import com.electives.game.scenes.Hud;
+import com.electives.game.sprites.Assassin;
+import com.electives.game.tools.B2WorldCreator;
 
 /**
  * Created by Zidrex Andag on 12/30/2019.
  */
 public class PlayScreen implements Screen {
-    public static final float PXM = 32;
 
     private static final float TIMESTEP = 1 / 60f;
     private static final int VELOCITY_ITERATIONS = 8;
@@ -29,10 +30,21 @@ public class PlayScreen implements Screen {
 
     private Elective4 game;
 
-    private World world;
-    private Box2DDebugRenderer debugRenderer;
     private OrthographicCamera cam;
+    private Viewport viewport;
 
+    //tiledMap variables
+    private TmxMapLoader mapLoader;
+    private TiledMap map;
+    private OrthogonalTiledMapRenderer renderer;
+    private Hud hud;
+
+    //box2d variables
+    private World world;
+    private Box2DDebugRenderer b2dr;
+    private Assassin assassin;
+
+    private TextureAtlas atlas;
 
 
     public PlayScreen(Elective4 game) {
@@ -41,79 +53,88 @@ public class PlayScreen implements Screen {
 
     @Override
     public void show() {
-        world = new World(new Vector2(0, -9.81f),true);
-        debugRenderer = new Box2DDebugRenderer();
-
         cam = new OrthographicCamera();
+        viewport = new FitViewport(Elective4.GAME_WIDTH / Elective4.PPM, Elective4.GAME_HEIGHT / Elective4.PPM,cam);
 
-        //escape key
-        Gdx.input.setInputProcessor(new InputController(){
-            @Override
-            public boolean keyDown(int keycode) {
-                if(keycode == Input.Keys.ESCAPE)
-                    game.setScreen(new LevelsScreen(game));
-                return true;
-            }
-        });
+        mapLoader = new TmxMapLoader();
+        map = mapLoader.load("map/level25.tmx");
+        renderer = new OrthogonalTiledMapRenderer(map, 1 / Elective4.PPM);
 
-        //BALL
-        //Body def
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(0,1);
+        cam.position.set(viewport.getWorldWidth() / 2 ,viewport.getWorldHeight() / 2,0);
+        //cam.setToOrtho(false, viewport.getWorldWidth()/2, viewport.getWorldHeight()/2);
 
-        //ball shape
-        CircleShape shape = new CircleShape();
-        shape.setRadius(0.5f);
+        hud = new Hud(game.batch);
 
-        //fixture def -- physicacl properties of a body
-        FixtureDef fixtureDef = new FixtureDef();
-        fixtureDef.shape = shape; //
-        fixtureDef.density = 2.5f;//kilogram - mass per sq meter
-        fixtureDef.friction = .25f;//how rubbiness the body 1- cannot slide over something, 0 - slides like ice
-        fixtureDef.restitution = .75f; //bounciness 1 - 100% reflected, 0 - no bounciness;
+        world = new World(new Vector2(0,-10), true);
+        b2dr = new Box2DDebugRenderer();
 
-        world.createBody(bodyDef).createFixture(fixtureDef);
+        new B2WorldCreator(world,map);
 
-        shape.dispose();
+        assassin = new Assassin(world,this);
+        atlas = new TextureAtlas("assassin-sprite.pack");
+    }
 
-        //GROUND
-        //body def
-        bodyDef.type = BodyDef.BodyType.StaticBody;
-        bodyDef.position.set(0,0);
+    public void handleInput(float dt){
 
-        //shape
-        ChainShape groundShape = new ChainShape();
-        groundShape.createChain(new Vector2[]{
-                new Vector2(-500,0), new Vector2(500,0)
-        });
+        if(Gdx.input.isKeyJustPressed(Input.Keys.UP))
+            assassin.b2body.applyLinearImpulse(new Vector2(0,4), assassin.b2body.getWorldCenter(),true);
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && assassin.b2body.getLinearVelocity().x <= 2)
+            assassin.b2body.applyLinearImpulse(new Vector2(0.1f, 0), assassin.b2body.getWorldCenter(), true);
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && assassin.b2body.getLinearVelocity().x >= -2)
+            assassin.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), assassin.b2body.getWorldCenter(), true);
 
+    }
 
-        //fixture
-        fixtureDef.friction = .5f;
-        fixtureDef.restitution = 0;
-        fixtureDef.shape = groundShape;
+    public void update(float dt){
+        //handle user input first
+        handleInput(dt);
 
-        world.createBody(bodyDef).createFixture(fixtureDef);
+        world.step(TIMESTEP,VELOCITY_ITERATIONS,POSITION_ITERATIONS);
 
-        groundShape.dispose();
+        assassin.update(dt);
+
+        //attach our game cam to player.x coordinate
+        cam.position.y = assassin.b2body.getPosition().y;
+
+        cam.update();
+        renderer.setView(cam);
+    }
+
+    public TextureAtlas getAtlas(){
+        return atlas;
     }
 
     @Override
     public void render(float delta) {
+        //separates our update logic from render method
+        update(delta);
+
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        debugRenderer.render(world, cam.combined);
+        //reders the game map
+        renderer.render();
 
-        world.step(TIMESTEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        //box2d debugrederer debuglines
+        b2dr.render(world,cam.combined);
+
+        game.batch.setProjectionMatrix(cam.combined);
+        game.batch.begin();
+        assassin.draw(game.batch);
+        game.batch.end();
+
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+
+
     }
 
     @Override
     public void resize(int width, int height) {
-        cam.viewportWidth =width / 25;
+        /*cam.viewportWidth = width / 25;
         cam.viewportHeight = height / 25;
-        cam.update();
+        cam.update();*/
+        viewport.update(width,height);
     }
 
     @Override
@@ -133,7 +154,10 @@ public class PlayScreen implements Screen {
 
     @Override
     public void dispose() {
+        map.dispose();
+        renderer.dispose();
         world.dispose();
-        debugRenderer.dispose();
+        b2dr.dispose();
+        hud.dispose();
     }
 }

@@ -3,7 +3,7 @@
         "white": { "r": 1, "g": 1, "b": 1, "a": 1 }
     },
     "com.badlogic.gdx.graphics.g2d.BitmapFont": {
-        "white": { "file": "font/white2.fnt" },
+        "white": { "file": "font/blackRun.fnt" },
         "black": { "file": "font/black2.fnt" },
         "btnBlk": { "file": "font/black.fnt"},
         "black32": {"file": "font/black32.fnt"},
@@ -36,6 +36,5 @@
     },
     "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
         "default": { "font": "black32", "fontColor": "white", "messageFontColor": "white", "background": "checkbox-off", "cursor": "default-selection"  }
-
     }
 }

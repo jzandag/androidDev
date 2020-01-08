@@ -1,0 +1,27 @@
+{
+    "com.badlogic.gdx.graphics.Color" : {
+        "white": { "r": 1, "g": 1, "b": 1, "a": 1 }
+    },
+    "com.badlogic.gdx.graphics.g2d.BitmapFont": {
+        "runBlack32": { "file": "font/run-black32.fnt" },
+        "runWhite32": { "file": "font/run-white32.fnt" },
+        "runBlack16": { "file": "font/run-black16.fnt"},
+        "runWhite16": { "file": "font/run-white16.fnt"},
+        "virtualWhite32": { "file": "font/virtual-white32.fnt"},
+        "blackRun": { "file": "font/blackRun.fnt"}
+
+    },
+    "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+        "default": { "font":  "blackRun", "fontColor": "white" },
+        "title": { "font":  "runBlack32", "fontColor": "white" },
+        "titleSmall": { "font":  "runBlack16", "fontColor": "white" }
+    },
+    "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+        "playBtn": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "virtualWhite32" }
+    },
+    "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+        "playBtn": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1},
+        "settingsBtn": { "up": "tr-settings", "down": "tr-settings" },
+        "highScoreBtn": { "up": "tr-highscore", "down": "tr-highscore" }
+    }
+}

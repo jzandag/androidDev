@@ -3,14 +3,17 @@ package com.electives.game.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -37,10 +40,10 @@ public class MainMenuScreen implements Screen {
     private Stage stage; //done
     private Skin skin; //done
     private Table table; //done
-    private BitmapFont white,black; //done
     private TweenManager tweenManager;
+    private ShapeRenderer rect;
 
-    private Music music;
+    private Sound btnClick;
 
     public MainMenuScreen(Elective4 game){
         this.game = game;
@@ -48,73 +51,72 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void show() {
-        background = new Texture("img/moonbg.jpg");
-        music = Gdx.audio.newMusic(Gdx.files.internal("audio/Melody.mp3"));
-        music.setLooping(true);
-        music.setVolume(0.3f);
-        music.play();
+        rect = new ShapeRenderer();
+
+        background = new Texture("img/hitman.jpg");
+        btnClick = game.assets.get("gfx/gunShot.wav", Sound.class);
 
         stage = new Stage(new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
         Gdx.input.setInputProcessor(stage);
 
-        skin = new Skin(Gdx.files.internal("ui/menuSkin.json"),new TextureAtlas("ui/atlas.pack"));
+        skin = new Skin(Gdx.files.internal("ui/style.json"),new TextureAtlas("ui/tr.pack"));
 
         table = new Table(skin);
         table.setBounds(0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-        //creating fonts
-        white = new BitmapFont(Gdx.files.internal("font/white.fnt"),false);
-        black = new BitmapFont(Gdx.files.internal("font/black.fnt"),false);
+        table.setFillParent(true);
 
         //creating heading
         Label heading = new Label(Elective4.TITLE, skin);
-        heading.setFontScale(2);
+        heading.setFontScale(1.5f);
 
-        //creating button
-        /*TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
-        textButtonStyle.up = skin.getDrawable("button-up");
-        textButtonStyle.down = skin.getDrawable("button-down");
-        textButtonStyle.pressedOffsetX = 1;
-        textButtonStyle.pressedOffsetY = -1;
-        textButtonStyle.font = black;*/
-
-        TextButton buttonPlay = new TextButton("Play Now", skin);
+        TextButton buttonPlay = new TextButton("Play now", skin,"playBtn");
         buttonPlay.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 // Gdx.net.openURI("https://maypasokba.com");
+                btnClick.play();
                 game.setScreen(new LevelsScreen(game));
             }
         });
         buttonPlay.pad(15);
-
-        TextButton buttonSettings = new TextButton("Settings", skin);
+        buttonPlay.setTransform(true);
+        buttonPlay.scaleBy(0.1f);
+        ImageButton buttonSettings = new ImageButton(skin,"settingsBtn");
         buttonSettings.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Settings btn");
+                btnClick.play();
                 game.setScreen(new SettingsScreen(game));
             }
         });
-        buttonSettings.pad(15);
-
-        TextButton buttonExit = new TextButton("Exit",skin);
-        buttonExit.pad(15);
-        buttonExit.addListener(new ClickListener(){
+        ImageButton buttonHighScore = new ImageButton(skin,"highScoreBtn");
+        buttonHighScore.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.exit();
+                System.out.println("High Score btn");
+                btnClick.play();
+                //game.setScreen(new SettingsScreen(game));
             }
         });
+        buttonSettings.setTransform(true);
+        buttonHighScore.setTransform(true);
+        //buttonSettings.sizeBy(40,40);
+        buttonSettings.scaleBy(0.5f);
+        buttonHighScore.scaleBy(0.5f);
 
         //putting stuff together
-        table.add(heading).spaceBottom(20);
+
+        //table.debug();
+        table.add(buttonSettings).left().top().padTop(40).padLeft(20);
+        table.add(buttonHighScore).right().top().padTop(40).padRight(40).spaceBottom(100);
         table.row();
-        table.add(buttonPlay).spaceBottom(10);
+        table.add(heading).expandX().colspan(2).spaceBottom(100);
         table.row();
-        table.add(buttonSettings).spaceBottom(15);
+        table.add(buttonPlay).top().colspan(2).expandY().spaceBottom(20);
         table.row();
-        table.add(buttonExit);
         //table.debug(); //enables all the debug line
+
         stage.addActor(table);
 
         // creating animations
@@ -124,24 +126,19 @@ public class MainMenuScreen implements Screen {
 
         // heading color animation
         Timeline.createSequence().beginSequence()
-                .push(Tween.to(heading, ActorAccessor.RGB, 0.5f).target(0.259f, 0.05118f, 0.035433f))
-                .push(Tween.to(heading, ActorAccessor.RGB, 0.5f).target(1, 0.157480f, 0))
-                .push(Tween.to(heading, ActorAccessor.RGB, 0.5f).target(1, 0.031496f, 0))
-                .push(Tween.to(heading, ActorAccessor.RGB, 0.5f).target(1, 0.14173228f, 0.448818f))
-                .push(Tween.to(heading, ActorAccessor.RGB, 0.5f).target(1, 0.503937f, 0.448818f))
-                .end().repeat(Tween.INFINITY, -1).start(tweenManager);
-
+                .push(Tween.to(heading, ActorAccessor.RGB, 2.5f).target(0.721566f, 0.0588235f, 0.03921569f))
+                .push(Tween.to(heading, ActorAccessor.RGB, 2.5f).target(0.259f, 0.05118f, 0.035433f))
+                .push(Tween.to(heading, ActorAccessor.RGB, 2.5f).target(1f, 1, 1))
+                .end().repeatYoyo(Tween.INFINITY, -1).start(tweenManager);
         //headings and button fade in
         Timeline.createSequence().beginSequence()
                 .push(Tween.set(buttonPlay,ActorAccessor.ALPHA).target(0))
-                .push(Tween.set(buttonExit,ActorAccessor.ALPHA).target(0))
                 .push(Tween.from(heading,ActorAccessor.ALPHA,0.25f).target(0))
                 .push(Tween.to(buttonPlay, ActorAccessor.ALPHA, 0.15f).target(1))
-                .push(Tween.to(buttonExit,ActorAccessor.ALPHA,0.25f).target(1))
                 .end().start(tweenManager);
 
         //table fade in
-        Tween.from(heading, ActorAccessor.ALPHA, 0.5f).target(0).start(tweenManager);
+        //Tween.from(heading, ActorAccessor.ALPHA, 0.5f).target(0).start(tweenManager);
         Tween.from(table, ActorAccessor.Y, 0.5f).target(Gdx.graphics.getHeight() / 8).start(tweenManager);
 
         //tweenManager.update(Gdx.graphics.getDeltaTime());
@@ -153,9 +150,17 @@ public class MainMenuScreen implements Screen {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        /*rect.setAutoShapeType(true);
+        rect.begin();
+        rect.set(ShapeRenderer.ShapeType.Filled);
+        rect.rect(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), Color.DARK_GRAY,Color.DARK_GRAY,Color.BLACK,Color.BLACK);
+        rect.end();*/
+
         game.batch.begin();
         game.batch.draw(background,0 ,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         game.batch.end();
+
+
 
         stage.act(delta);
         stage.draw();
@@ -184,6 +189,7 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void hide() {
+
         dispose();
     }
 
@@ -193,8 +199,6 @@ public class MainMenuScreen implements Screen {
 
         stage.dispose();
         skin.dispose();
-        white.dispose();
-        black.dispose();
         background.dispose();
     }
 }

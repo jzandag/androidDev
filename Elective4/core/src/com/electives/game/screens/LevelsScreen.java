@@ -1,15 +1,15 @@
 package com.electives.game.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -35,37 +35,71 @@ public class LevelsScreen implements Screen {
     private Skin skin;
     private ScrollPane scrollPane;
     private TextButton playBtn, backBtn;
+
+    private ShapeRenderer rect;
+
     public LevelsScreen(Elective4 game) {
         this.game = game;
     }
 
     @Override
     public void show() {
+        rect = new ShapeRenderer();
+
         stage = new Stage();
 
         Gdx.input.setInputProcessor(stage);
 
-        atlas = new TextureAtlas("ui/atlas.pack");
-        skin = new Skin(Gdx.files.internal("ui/menuSkin.json"),atlas);
+        atlas = new TextureAtlas("ui/tr.pack");
+        skin = new Skin(Gdx.files.internal("ui/levelSkin.json"),atlas);
 
         table = new Table(skin);
         table.setBounds(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         table.setFillParent(true);
-        table.debug();
-        List list = new List(skin);
+        /*
+        table1 = new Table(skin);
+        table1.add(new Image(texture1)).expandY().fillY();
+        table1.add(new Label("", skin)).width(10f).expandY().fillY();// a spacer
+        table1.add(new Label("Look at this axe I stole!", skin)).expandY().fillY();
+
+        Table innerContainer = new Table();
+        innerContainer.add(table1).expand().fill();
+        innerContainer.row();
+
+        scrollpane = new ScrollPane(innerContainer);
+        container.add(scrollpane).fill().expand();
+        stage.add(container)
+        *
+        * */
+        skin.get(List.ListStyle.class).selection.setBottomHeight(3);
+        skin.get(List.ListStyle.class).selection.setTopHeight(3);
+        final List list = new List(skin);
+
         list.setItems(new String[]{"Level 1","Level 2","Level 3","Level 4","Level 5",
-                "Level 6","Level 7","Level 8","Level 9","Level 10","Level 12",
-                "Level 13","Level 14","Level 15","Level 16","Level 17","Level 18"});
+                "Level 6","Level 7","Level 8","Level 9","Level 10","Level 11","Level 12",
+                "Level 13","Level 14","Level 15","Level 16","Level 17","Level 18","End","Gago","Ka", "Ba"});
         scrollPane = new ScrollPane(list,skin);
 
-        playBtn = new TextButton("PLAY", skin);
+        playBtn = new TextButton("PLAY", skin, "small");
         playBtn.addListener(new ClickListener(){
             @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new PlayScreen(game));
+            public void     clicked(InputEvent event, float x, float y) {
+                //game.setScreen(new PlayScreen(game));
+                int levelChoice = list.getSelectedIndex() + 1;
+                System.out.println("Selected level:" + levelChoice);
+                switch (levelChoice){
+                    case 1:
+                        game.setScreen(new PlayScreen(game));
+                        break;
+                    case 18:
+                        game.setScreen(new ZidScreen(game));
+                        break;
+                    default:
+                        break;
+                }
             }
         });
-        playBtn.pad(15);
+        playBtn.pad(10);
 
         backBtn = new TextButton("BACK", skin,"small");
         backBtn.addListener(new ClickListener(){
@@ -82,12 +116,15 @@ public class LevelsScreen implements Screen {
         backBtn.pad(10);
 
         //putting stuff together
-        table.add().width(table.getWidth() /3);
-        table.add("SELECT LEVEL").width(table.getWidth()/3);
-        table.add().width(table.getWidth() /3).row();
-        table.add(scrollPane).left().expandY();
-        table.add(playBtn);
-        table.add(backBtn).bottom().right();
+        //table.debug();
+        table.add();
+        table.add("SELECT LEVEL").colspan(2);
+        table.add().row();
+        table.add(scrollPane).colspan(4).center().expandY().row();
+        table.add();
+        table.add(playBtn).pad(20);
+        table.add(backBtn).pad(20);
+        table.add();
 
 
         stage.addActor(table);
@@ -99,6 +136,12 @@ public class LevelsScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        rect.setAutoShapeType(true);
+        rect.begin();
+        rect.set(ShapeRenderer.ShapeType.Filled);
+        rect.rect(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight()/2, new Color(0.1294f,0.1294f,0.1294f,0),new Color(0.1294f,0.1294f,0.1294f,0),Color.BLACK,Color.BLACK);
+        rect.end();
 
         stage.act(delta);
         stage.draw();
