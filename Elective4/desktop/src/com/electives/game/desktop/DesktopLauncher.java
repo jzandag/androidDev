@@ -9,13 +9,11 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Electives Project v0.1 placeholder";
 		config.resizable = true;
-		//config.foregroundFPS = 60;
 		config.useGL30 = true;
-//		config.x = -1;
-//		config.y = -1;
 		config.width = Elective4.GAME_WIDTH;
 		config.height = Elective4.GAME_HEIGHT;
 		config.vSyncEnabled = true;
+		config.audioDeviceBufferCount = 4096*10;
 
 		new LwjglApplication(new Elective4(), config);
 	}

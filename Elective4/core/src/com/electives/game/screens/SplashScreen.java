@@ -1,9 +1,7 @@
 package com.electives.game.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -37,12 +35,12 @@ public class SplashScreen implements Screen {
         tweenManager = new TweenManager();
         Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 
-        splashTexture = new Texture("img/splash.jpg");
+        splashTexture = new Texture("img/sp.jpg");
         splash = new Sprite(splashTexture);
         splash.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
         Tween.set(splash, SpriteAccessor.ALPHA).target(0).start(tweenManager);
-        Tween.to(splash, SpriteAccessor.ALPHA,0.5f).target(1).repeatYoyo(1,0.5f).setCallback(new TweenCallback() {
+        Tween.to(splash, SpriteAccessor.ALPHA,2f).target(1).repeatYoyo(1,0.5f).setCallback(new TweenCallback() {
             @Override
             public void onEvent(int type, BaseTween<?> source) {
                 game.setScreen(new MainMenuScreen(game));
@@ -82,12 +80,13 @@ public class SplashScreen implements Screen {
 
     @Override
     public void hide() {
-        //dispose();
+        dispose();
     }
 
     @Override
     public void dispose() {
         game.dispose();
         splash.getTexture().dispose();
+        splashTexture.dispose();
     }
 }

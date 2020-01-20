@@ -16,11 +16,14 @@
     "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
         "default": { "font":  "blackRun", "fontColor": "white" },
         "title": { "font":  "runBlack32", "fontColor": "white" },
-        "titleSmall": { "font":  "runBlack16", "fontColor": "white" }
+        "titleSmall": { "font":  "runBlack16", "fontColor": "white" },
+        "playagain": { "font": "boiW32", "fontColor": "white"},
+        "levelClear": { "font": "boiB32", "fontColor": "black"}
     },
     "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
         "default": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "boiW32" },
-        "small": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "boiW32" }
+        "small": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "boiW32" },
+        "back": { "up": "btn-brown", "down": "btn-brown", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "virtualWhite32" }
     },
     "com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle": {
         "default": { "font": "boiW32", "fontColorUnselected": "white", "fontColorSelected": "white", "selection": "default-selection"
@@ -34,5 +37,18 @@
     },
     "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
         "default": { "font": "boiW32", "fontColor": "white", "messageFontColor": "white", "background": "checkbox-off", "cursor": "default-selection"  }
+    },
+    "com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle": {
+        "unlocked": { "imageUp": "tr-play", "up": "dialog-box", "font": "boiB32"},
+        "locked": { "imageUp": "locked", "up": "dialog-box", "font": "boiB32"}
+    },
+    "com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle": {
+        "default": { "titleFont": "boiB32", "titleFontColor": "black"}
+    },
+    "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+        "home": { "up": "red_home"},
+        "next": { "up": "red_play"},
+        "restart": { "up": "red_replay"}
     }
+
 }

@@ -1,8 +1,8 @@
 package com.electives.game.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -16,8 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.electives.game.Elective4;
-
-import javax.xml.stream.events.EndElement;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
@@ -34,7 +32,7 @@ public class SettingsScreen implements Screen {
 
     private Elective4 game;
 
-    public SettingsScreen(Elective4 game){
+    SettingsScreen(Elective4 game){
         this.game = game;
     }
 
@@ -48,9 +46,13 @@ public class SettingsScreen implements Screen {
     }
 
     /** @return if vSync is enabled */
-    public static boolean vSync() {
+    static boolean vSync() {
         return Gdx.app.getPreferences(Elective4.TITLE).getBoolean("vsync");
     }
+    static boolean audio() {
+        return Gdx.app.getPreferences(Elective4.TITLE).getBoolean("audio");
+    }
+
 
     @Override
     public void render(float delta) {
@@ -89,6 +91,36 @@ public class SettingsScreen implements Screen {
 
         final TextButton back = new TextButton("BACK", skin);
         back.pad(10);
+        final CheckBox audio = new CheckBox(" Audio",skin);
+        audio.setChecked(audio());
+
+        final TextButton zid = new TextButton(" @blank_cardx",skin,"twitter");
+        final TextButton ven = new TextButton(" @dendenpest",skin,"twitter");
+        ven.addListener(new ClickListener(){
+
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.net.openURI("tangina.com");
+            }
+        });
+
+        Label settings = new Label("Settings",skin);
+        //android
+        settings.setFontScale(2);
+        back.getLabel().setFontScale(1.6f);
+        zid.getLabel().setFontScale(1.6f);
+        ven.getLabel().setFontScale(1.6f);
+
+
+        vSyncCheckBox.getImage().setScale(2);
+        vSyncCheckBox.getImage().setOriginX(10);
+        vSyncCheckBox.getImage().setOriginY(10);
+        vSyncCheckBox.getLabel().setFontScale(1.5f);
+
+        audio.getImage().setScale(2);
+        audio.getImage().setOriginX(10);
+        audio.getImage().setOriginY(10);
+        audio.getLabel().setFontScale(1.5f);
 
         ClickListener buttonHandler = new ClickListener() {
 
@@ -120,6 +152,22 @@ public class SettingsScreen implements Screen {
                             game.setScreen(new MainMenuScreen(game));
                         }
                     })));
+                }else if(event.getListenerActor() == zid){
+                    Gdx.net.openURI("https://twitter.com/blank_cardx");
+                }else if(event.getListenerActor() == ven){
+                    Gdx.net.openURI("https://twitter.com/dendenpest");
+                }
+                else if(event.getListenerActor() == audio){
+                    // save vSync
+                    Gdx.app.getPreferences(Elective4.TITLE).putBoolean("audio", audio.isChecked());
+
+                    // set vSync
+                    if(!audio())
+                        game.assets.get("audio/illuminati.wav", Music.class).setVolume(0);
+                    else
+                        game.assets.get("audio/illuminati.wav", Music.class).setVolume(0.7f);
+
+                    Gdx.app.log(Elective4.TITLE, "audio " + (vSync() ? "enabled" : "disabled"));
                 }
             }
         };
@@ -127,13 +175,21 @@ public class SettingsScreen implements Screen {
         vSyncCheckBox.addListener(buttonHandler);
 
         back.addListener(buttonHandler);
+        zid.addListener(buttonHandler);
+        ven.addListener(buttonHandler);
+        audio.addListener(buttonHandler);
 
         // putting everything in the table
-        table.add(new Label("SETTINGS", skin)).spaceBottom(50).colspan(2).row();
+        //table.debug();
+        table.center();
+        table.add(settings).spaceBottom(50).colspan(2).row();
 //        table.add("level directory").row();
 //        table.add(levelDirectoryInput).fillX().spaceBottom(15).row();
-        table.add(vSyncCheckBox).expandY().top().row();
-        table.add(back).bottom().right();
+        table.add(vSyncCheckBox).expandX().top().spaceBottom(20).row();
+        table.add(audio).colspan(2).top().spaceBottom(20).row();
+        table.add(zid).colspan(2).top().spaceBottom(20).row();
+        table.add(ven).top().colspan(2).spaceBottom(20).row();
+        table.add(back).colspan(2).center().pad(20).bottom().expandY().right();
         stage.addActor(table);
 
         stage.addAction(sequence(moveTo(0, stage.getHeight()), moveTo(0, 0, .5f))); // coming in from top animation

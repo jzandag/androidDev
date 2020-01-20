@@ -3,59 +3,23 @@ tr.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-dialog-box
+default-transparent
   rotate: false
-  xy: 0, 9
-  size: 400, 100
-  split: 25, 29, 24, 27
-  orig: 400, 100
+  xy: 0, 789
+  size: 1, 1
+  orig: 1, 1
   offset: 0, 0
   index: -1
-tr-pause
+default-selection
   rotate: false
-  xy: 400, 68
-  size: 40, 41
-  orig: 40, 41
-  offset: 0, 0
-  index: -1
-tr-highscore
-  rotate: false
-  xy: 400, 28
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-tr-play
-  rotate: false
-  xy: 440, 69
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-tr-replay
-  rotate: false
-  xy: 480, 69
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-tr-settings
-  rotate: false
-  xy: 440, 29
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-tr-stop
-  rotate: false
-  xy: 480, 29
-  size: 40, 40
-  orig: 40, 40
+  xy: 1, 787
+  size: 3, 3
+  orig: 3, 3
   offset: 0, 0
   index: -1
 btn-box
   rotate: false
-  xy: 0, 0
+  xy: 4, 781
   size: 9, 9
   split: 1, 2, 1, 2
   orig: 9, 9
@@ -63,36 +27,163 @@ btn-box
   index: -1
 checkbox-over
   rotate: false
-  xy: 9, 0
+  xy: 13, 781
   size: 9, 9
   orig: 9, 9
   offset: 0, 0
   index: -1
 checkbox-off
   rotate: false
-  xy: 400, 16
+  xy: 22, 778
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 checkbox-on
   rotate: false
-  xy: 412, 16
+  xy: 34, 778
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
-default-selection
+locked
   rotate: false
-  xy: 18, 6
-  size: 3, 3
-  orig: 3, 3
+  xy: 46, 750
+  size: 50, 40
+  orig: 50, 40
   offset: 0, 0
   index: -1
-default-transparent
+tr-highscore
   rotate: false
-  xy: 440, 28
-  size: 1, 1
-  orig: 1, 1
+  xy: 96, 750
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+tr-play
+  rotate: false
+  xy: 136, 750
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+tr-replay
+  rotate: false
+  xy: 176, 750
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+tr-settings
+  rotate: false
+  xy: 216, 750
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+tr-stop
+  rotate: false
+  xy: 256, 750
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+tr-pause
+  rotate: false
+  xy: 296, 749
+  size: 40, 41
+  orig: 40, 41
+  offset: 0, 0
+  index: -1
+dialog-box
+  rotate: false
+  xy: 336, 690
+  size: 400, 100
+  split: 40, 44, 28, 26
+  orig: 400, 100
+  offset: 0, 0
+  index: -1
+sf-settings
+  rotate: false
+  xy: 736, 550
+  size: 209, 240
+  orig: 209, 240
+  offset: 0, 0
+  index: -1
+btn-brown
+  rotate: false
+  xy: 0, 549
+  size: 300, 200
+  orig: 300, 200
+  offset: 0, 0
+  index: -1
+red_home
+  rotate: false
+  xy: 300, 480
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1
+red_pause
+  rotate: false
+  xy: 510, 480
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1
+red_play
+  rotate: false
+  xy: 720, 340
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1
+red_replay
+  rotate: false
+  xy: 0, 339
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1
+red_settings
+  rotate: false
+  xy: 210, 270
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1
+sf-highscore
+  rotate: false
+  xy: 420, 240
+  size: 210, 240
+  orig: 210, 240
+  offset: 0, 0
+  index: -1
+sf-pause
+  rotate: false
+  xy: 630, 100
+  size: 210, 240
+  orig: 210, 240
+  offset: 0, 0
+  index: -1
+sf-play
+  rotate: false
+  xy: 0, 99
+  size: 210, 240
+  orig: 210, 240
+  offset: 0, 0
+  index: -1
+sf-replay
+  rotate: false
+  xy: 210, 30
+  size: 210, 240
+  orig: 210, 240
+  offset: 0, 0
+  index: -1
+sf-stop
+  rotate: false
+  xy: 420, 0
+  size: 210, 240
+  orig: 210, 240
   offset: 0, 0
   index: -1

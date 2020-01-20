@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="-1" width="15" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="27">
+ <tileset firstgid="1" name="ts-basechip" tilewidth="32" tileheight="32" tilecount="1064" columns="8">
+  <image source="ts-basechip.png" width="256" height="4256"/>
+ </tileset>
+ <tileset firstgid="1065" name="ui" tilewidth="32" tileheight="32" tilecount="4" columns="4">
+  <image source="ui.png" width="128" height="32"/>
+ </tileset>
+ <tileset firstgid="1069" name="ts-castle" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="ts-castle.png" width="512" height="512"/>
+ </tileset>
+ <layer id="1" name="Theme" width="15" height="22">
+  <data encoding="base64" compression="zlib">
+   eJwTZmVg+M/CkPCOhYGBWAxUz8AM1KfMCuHfJQG/Q9JLij50vZTYO6p36OoFokHrZlL0DQa9wgPoZnLDGeRmXiDmA2J+AmwYH9leWSCWA2J5AmxkPshOANiZ7sE=
+  </data>
+ </layer>
+ <layer id="2" name="SB" width="15" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAcOBCQ1wdiAyDmB2IBNDkPIu0QB2IJ0pxFNNBkQWBqAmz+JRbQ0r/kAGLCBp9/CemnhX+pHZ+0BkPNvaSkb3S1pMT3YMgLAPIBA6k=
+  </data>
+ </layer>
+ <layer id="3" name="Object" width="15" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFyECLBYKJVYcNE6OXFPGBBoTchU+e2DAhpJ9Sc2Bm0RtoU8HdxABK4mgUEAYAE1sEUg==
+  </data>
+ </layer>
+ <objectgroup id="4" name="Wall">
+  <object id="9" x="65.5" y="515.5" width="28" height="24.5"/>
+  <object id="10" x="321" y="516" width="28" height="23"/>
+  <object id="11" x="226" y="453" width="27" height="19"/>
+  <object id="12" x="226" y="391" width="23" height="21"/>
+  <object id="13" x="322" y="291" width="26" height="25"/>
+  <object id="14" x="66" y="292" width="27" height="56"/>
+  <object id="15" x="97" y="324" width="25" height="53"/>
+  <object id="16" x="128" y="356" width="92" height="23"/>
+  <object id="17" x="98" y="164" width="219" height="25"/>
+  <object id="18" x="97" y="192" width="28" height="28"/>
+  <object id="19" x="258" y="132" width="60" height="32"/>
+  <object id="25" x="289.333" y="193.333" width="28" height="28"/>
+  <object id="26" x="-117.333" y="80"/>
+ </objectgroup>
+ <objectgroup id="5" name="Kill">
+  <object id="1" x="21.3333" y="0" width="12" height="702.667"/>
+  <object id="2" x="18.6667" y="-1.33333" width="465.333" height="5.33333"/>
+  <object id="4" x="444" y="-1.33333" width="13.3333" height="709.333"/>
+  <object id="5" x="21.3333" y="666.667" width="458.667" height="16"/>
+ </objectgroup>
+ <objectgroup id="6" name="Key">
+  <object id="8" x="193.875" y="450.75" width="28.375" height="26.75"/>
+ </objectgroup>
+ <objectgroup id="7" name="Moving Wall"/>
+ <objectgroup id="8" name="Explode">
+  <object id="20" x="161" y="129" width="91" height="28"/>
+  <object id="21" x="97" y="291" width="27" height="25"/>
+  <object id="22" x="129" y="324" width="29" height="21"/>
+  <object id="23" x="97" y="388" width="25" height="25"/>
+  <object id="24" x="66" y="484" width="26" height="21"/>
+ </objectgroup>
+</map>

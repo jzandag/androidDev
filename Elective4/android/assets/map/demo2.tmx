@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="55">
+ <tileset firstgid="1" name="ts-room" tilewidth="32" tileheight="32" tilecount="117" columns="9">
+  <image source="ts-room.png" width="288" height="416"/>
+ </tileset>
+ <layer id="1" name="background" width="15" height="22">
+  <data encoding="base64" compression="zlib">
+   eAGtk7kOAjEMRINAFJwFp8TZIVFwdPwQouUT+TRmELMaRQlLEMXI3sRvPTZsI4TQ/EEtMB2oCw0K1ENtHxpBY2hWoAlqp9A9hMcC8fLWHHFozzr3uMc92VvEeo3nB3sfWXAvz96X9Serc17nZOG3Yv29Xq/8iloyfJbneF7VMqqPnzmbm5f7yu1Mffkb+bzuPWZ5Ry85NvaX8k62DanvDrkk3j3ojFF9P+3K6z0Xm9rVEe+mzhbJctbSeb2ns//2zD65PfFO82rP7qsuF5vynOupc7LY8dffoHshi57Vf8Pv6nJ5XoJfQdsCrVG7gZ744UHQ
+  </data>
+ </layer>
+ <layer id="2" name="objects" width="15" height="22">
+  <data encoding="base64" compression="zlib">
+   eAFjYKAchACNCAXiMKhRsUA6DspGl4MKU41KpJpJCIMEgExBBJckljZQtQ5JOkhTTC+3OZPmLBTVKSg8whyQn3KhmIOAcnT/SwLVs0GxFJJebOkCPW5w6UUyBieTEr1KQFOZoRjZzeh+w2Y5yA98UIycztD9BtOLy0xi4giXmTCzRxINANfACUM=
+  </data>
+ </layer>
+ <objectgroup id="5" name="wall">
+  <object id="25" x="343.291" y="-38.0027">
+   <point/>
+  </object>
+  <object id="26" x="96" y="256" width="64" height="32"/>
+  <object id="27" x="288" y="160" width="64" height="32"/>
+  <object id="28" x="64" y="512" width="64" height="32"/>
+  <object id="29" x="256" y="544" width="65.7562" height="31.1075"/>
+  <object id="30" x="352" y="352" width="124.3" height="159.77"/>
+  <object id="31" x="224" y="384" width="64" height="32"/>
+ </objectgroup>
+ <objectgroup id="4" name="killer">
+  <object id="23" x="67" y="354.667" width="90.3333" height="27"/>
+  <object id="37" x="512" y="288" width="32" height="256"/>
+  <object id="38" x="448" y="544" width="64"/>
+  <object id="39" x="480" y="544" height="160"/>
+  <object id="40" x="0" y="704" width="480"/>
+  <object id="41" x="0" y="32" height="672"/>
+  <object id="42" x="0" y="0" height="32"/>
+  <object id="43" x="0" y="0" width="480"/>
+  <object id="45" x="476" y="0" width="4" height="280"/>
+  <object id="46" x="480" y="288" width="32"/>
+  <object id="47" x="480" y="256" height="32"/>
+ </objectgroup>
+ <objectgroup id="6" name="key">
+  <object id="48" x="320" y="192" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup id="7" name="wallm">
+  <object id="50" x="96" y="96" width="32" height="32"/>
+  <object id="51" x="64" y="384" width="32" height="32"/>
+  <object id="54" gid="97" x="160" y="128" width="32" height="32"/>
+ </objectgroup>
+</map>

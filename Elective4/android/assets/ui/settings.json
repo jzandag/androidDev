@@ -18,7 +18,8 @@
     },
     "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
         "default": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "virtualWhite32" },
-        "small": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "virtualWhite32" }
+        "small": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "virtualWhite32" },
+        "twitter": { "up": "btn-box", "down": "btn-box", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "boiW32" }
     },
     "com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle": {
         "default": {
