@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="-1" width="15" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="36">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="52">
  <tileset firstgid="1" name="ts-castle" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="ts-castle.png" width="512" height="512"/>
  </tileset>
@@ -8,34 +8,38 @@
  </tileset>
  <layer id="1" name="Theme" width="15" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjZ2Bg4ABiThJoEOYCYnEgliARSwKx1KjeUb2jekf1kqFXHYg1gFiTSBrG1gJicyC2AGJLImkY2wqIAWqYIQ0=
+   eAFjZ2Bg4ABiThJokFouIBYHYgkSsSRQvdSoXqLCbTSsiE9fo2E1MsJKHVh2aACxJpE0TK0WUL05EFsAsSWRNEytFVA9AGqYIQ0=
   </data>
  </layer>
  <layer id="2" name="SB" width="15" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjYGBgOMBAPrhAgto7aHY9IEHvGwJ2MTLilvuDZtcB7MrAZjChmYPOx+YGmN3Y3IBsF8wN6Gaim4PPLkIAZvYDvKqIs59ScIAC9aT6HVn9AxL1kqKe2mFEDXAAjU/IjcjqB2s44wNdZNIgMItMGgDoQB5d
+   eAGtkNENwCAIRLXjd4ROwwgdoB8M0BH6UU0kXgioNDUxoPc40JRSorK/rjNQeBWWgGfIZ+ldgFGvnH2Hp0gMMkGOafXYlI8+WzNIb4noib24CdpTeF1v9RLWi+LNHjC41/0H6JJES1SHkI++HXnulktZhP/7j5YGnECk9NmMyOO/KRvziDybhH8Z5T2nvQnRWMuOVhuNL+hAHl0=
   </data>
  </layer>
  <layer id="3" name="Object" width="15" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjYBj6gIlxoF1AmhvwqSVkDvMA+JWW4UuJ2YT0UhLO5LqLEjsp1UfLsBzpAACEUAAy
+   eAHdjzEOACAIA0X//2fD1hAposFBJ6T0KK3Vvi61fKW/2IFXyOKm3QzqZbNM0wwj8GNOrCMuztra83p962f/G0bkZTrTNG+kezcxH9M8XibLKT+zg+X8WZu+2gBC
   </data>
  </layer>
  <objectgroup id="4" name="Wall">
-  <object id="1" x="128.381" y="101.688" width="27.9643" height="24.1509"/>
   <object id="3" x="321.333" y="194" width="28.6667" height="27.3333"/>
   <object id="5" x="226.667" y="162.667" width="26.6667" height="25.3333"/>
   <object id="6" x="321.333" y="322.667" width="28.6667" height="89.3333"/>
-  <object id="7" x="97.3333" y="196.667" width="29.3333" height="20.6667"/>
+  <object id="7" x="97.8333" y="195.167" width="29.3333" height="25.6667"/>
   <object id="8" x="64.6667" y="290" width="29.3333" height="26.6667"/>
-  <object id="9" x="98.6667" y="386.667" width="24.6667" height="56"/>
+  <object id="9" x="98.6667" y="386.667" width="26.1667" height="58.5"/>
   <object id="10" x="66" y="450" width="28" height="26.6667"/>
   <object id="11" x="99.3333" y="516" width="26" height="58.6667"/>
-  <object id="12" x="258" y="484" width="27.3333" height="22.6667"/>
-  <object id="13" x="290" y="450" width="27.3333" height="24.6667"/>
-  <object id="19" x="257.333" y="130.667" width="25.3333" height="26.6667"/>
-  <object id="20" x="385.333" y="132" width="28" height="28"/>
   <object id="21" x="353.333" y="226.667" width="25.3333" height="26.6667"/>
+  <object id="36" x="290.667" y="35.3333" width="25.3333" height="26"/>
+  <object id="38" x="129.333" y="98" width="28" height="28"/>
+  <object id="39" x="130" y="226.5" width="27" height="25.5"/>
+  <object id="40" x="66" y="258.5" width="27.5" height="27"/>
+  <object id="41" x="257.75" y="290.5" width="27.5" height="27"/>
+  <object id="42" x="258.25" y="130.5" width="27.5" height="27"/>
+  <object id="43" x="386.75" y="131" width="27.5" height="27"/>
+  <object id="44" x="289.75" y="450.5" width="27.5" height="27"/>
+  <object id="45" x="258.25" y="482.5" width="27.5" height="27"/>
  </objectgroup>
  <objectgroup id="5" name="Kill">
   <object id="14" x="456" y="0" width="20" height="661.333"/>
@@ -44,17 +48,18 @@
   <object id="17" x="2.66667" y="644" width="480" height="25.3333"/>
  </objectgroup>
  <objectgroup id="6" name="Key">
-  <object id="18" x="97.3333" y="226.667" width="30.6667" height="32"/>
+  <object id="18" x="98.3333" y="229.167" width="26.6667" height="22"/>
  </objectgroup>
  <objectgroup id="7" name="Moving Wall"/>
  <objectgroup id="8" name="Explode">
   <object id="27" x="159.5" y="98" width="29.5" height="28"/>
-  <object id="28" x="226.5" y="132" width="28" height="26"/>
   <object id="29" x="259.5" y="162.5" width="25.5" height="25.5"/>
-  <object id="30" x="194.5" y="165" width="28" height="22"/>
-  <object id="31" x="292.5" y="196.5" width="23.5" height="22.5"/>
   <object id="32" x="356" y="258.5" width="24.5" height="24.5"/>
-  <object id="33" x="290" y="420" width="26.6667" height="22.6667"/>
-  <object id="34" x="162.667" y="516.667" width="24" height="20.6667"/>
+  <object id="46" x="290.75" y="418.5" width="27.5" height="27"/>
+  <object id="47" x="162.25" y="514" width="27.5" height="27"/>
+  <object id="48" x="66.75" y="162" width="27.5" height="59.5"/>
+  <object id="49" x="194.25" y="162.5" width="27.5" height="27"/>
+  <object id="50" x="227.25" y="130.5" width="27.5" height="27"/>
+  <object id="51" x="290.25" y="194" width="27.5" height="27"/>
  </objectgroup>
 </map>

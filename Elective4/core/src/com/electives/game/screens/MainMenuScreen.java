@@ -1,5 +1,6 @@
 package com.electives.game.screens;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
@@ -57,9 +58,12 @@ public class MainMenuScreen implements Screen {
         table.setFillParent(true);
 
         //creating heading
-        Label heading = new Label("Escape\nRoom", skin);
-        heading.setFontScale(1.9f);
-        heading.setWidth(Gdx.graphics.getWidth() - 40);
+        Label heading = new Label("Escape Room", skin);
+        if(Gdx.app.getType() == Application.ApplicationType.Android) {
+            heading.setFontScale(1.9f);
+            heading.setWidth(Gdx.graphics.getWidth() - 40);
+        }else
+            heading.setFontScale(1f);
         TextButton buttonPlay = new TextButton("Play now", skin,"playBtn");
         buttonPlay.addListener(new ClickListener(){
             @Override
@@ -68,9 +72,12 @@ public class MainMenuScreen implements Screen {
                 game.setScreen(new LevelsScreen(game));
             }
         });
-        buttonPlay.getLabel().setFontScale(2);
-        buttonPlay.pad(70);
-        buttonPlay.padTop(65);
+
+        if(Gdx.app.getType() == Application.ApplicationType.Android) {
+            buttonPlay.getLabel().setFontScale(2);
+            buttonPlay.pad(70);
+            buttonPlay.padTop(65);
+        }
 
         ImageButton buttonSettings = new ImageButton(skin,"settingsBtn");
         buttonSettings.addListener(new ClickListener(){
@@ -83,9 +90,12 @@ public class MainMenuScreen implements Screen {
         buttonSettings.setTransform(true);
 
         //putting stuff together
-        table.debug();
-        //table.add(buttonSettings).width(40).height(40).right().top().colspan(2).padTop(40).padRight(20).spaceBottom(80);
-        table.add(buttonSettings).width(80).height(80).right().top().colspan(2).padTop(40).padRight(20).spaceBottom(80);
+        //table.debug();
+        //
+        if(Gdx.app.getType() == Application.ApplicationType.Android)
+            table.add(buttonSettings).width(80).height(80).right().top().colspan(2).padTop(40).padRight(20).spaceBottom(80);
+        else
+            table.add(buttonSettings).width(40).height(40).right().top().colspan(2).padTop(40).padRight(20).spaceBottom(80);
         table.row();
         table.add(heading).expandX().colspan(2).spaceBottom(100);
         table.row();

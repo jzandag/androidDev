@@ -57,13 +57,15 @@ public class Player extends Sprite {
         stateTimer = 0;
         isLeft = false;
 
-        Array<TextureRegion> frames = new Array<>();
+        Array<TextureRegion> frames =   new Array<>();
         frames.add(screen.getAtlas().findRegion("player2"));
         frames.add(screen.getAtlas().findRegion("player3"));
+        frames.add(screen.getAtlas().findRegion("player1"));
         playerRun = new Animation<>(0.1f, frames);
         frames.clear();
         frames.add(screen.getAtlas().findRegion("player2Left"));
         frames.add(screen.getAtlas().findRegion("player3Left"));
+        frames.add(screen.getAtlas().findRegion("player1Left"));
         playerLeft = new Animation<>(0.1f,frames);
 
         definePlayer(positionX, positionY);
@@ -154,16 +156,16 @@ public class Player extends Sprite {
                     b2body.applyLinearImpulse(new Vector2(0, 0), b2body.getWorldCenter(), true);
                     break;
                 case UP:
-                    b2body.applyLinearImpulse(new Vector2(0, 2f), b2body.getWorldCenter(), true);
+                    b2body.applyLinearImpulse(new Vector2(0, 0.5f), b2body.getWorldCenter(), true);
                     break;
                 case DOWN:
-                    b2body.applyLinearImpulse(new Vector2(0, -2f), b2body.getWorldCenter(), true);
+                    b2body.applyLinearImpulse(new Vector2(0, -0.5f), b2body.getWorldCenter(), true);
                     break;
                 case LEFT:
-                    b2body.applyLinearImpulse(new Vector2(-2f, 0), b2body.getWorldCenter(), true);
+                    b2body.applyLinearImpulse(new Vector2(-0.5f, 0), b2body.getWorldCenter(), true);
                     break;
                 case RIGHT:
-                    b2body.applyLinearImpulse(new Vector2(2f, 0), b2body.getWorldCenter(), true);
+                    b2body.applyLinearImpulse(new Vector2(0.5f, 0), b2body.getWorldCenter(), true);
                     break;
             }
         } else if (currentState == State.WIN ) {
@@ -195,10 +197,10 @@ public class Player extends Sprite {
                 region = playerDead;
                 break;
             case RUNNING:
-                region = playerRun.getKeyFrame(stateTimer, true);
+                region = playerRun.getKeyFrame(stateTimer, false);
                 break;
             case RUNNINGLEFT:
-                region = playerLeft.getKeyFrame(stateTimer, true);
+                region = playerLeft.getKeyFrame(stateTimer, false);
                 break;
             case WIN:
             case STANDING:

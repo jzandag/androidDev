@@ -1,5 +1,6 @@
 package com.electives.game.screens;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -106,21 +107,23 @@ public class SettingsScreen implements Screen {
 
         Label settings = new Label("Settings",skin);
         //android
-        settings.setFontScale(2);
-        back.getLabel().setFontScale(1.6f);
-        zid.getLabel().setFontScale(1.6f);
-        ven.getLabel().setFontScale(1.6f);
+        if(Gdx.app.getType() == Application.ApplicationType.Android) {
+            settings.setFontScale(2);
+            back.getLabel().setFontScale(1.6f);
+            zid.getLabel().setFontScale(1.6f);
+            ven.getLabel().setFontScale(1.6f);
 
 
-        vSyncCheckBox.getImage().setScale(2);
-        vSyncCheckBox.getImage().setOriginX(10);
-        vSyncCheckBox.getImage().setOriginY(10);
-        vSyncCheckBox.getLabel().setFontScale(1.5f);
+            vSyncCheckBox.getImage().setScale(2);
+            vSyncCheckBox.getImage().setOriginX(10);
+            vSyncCheckBox.getImage().setOriginY(10);
+            vSyncCheckBox.getLabel().setFontScale(1.5f);
 
-        audio.getImage().setScale(2);
-        audio.getImage().setOriginX(10);
-        audio.getImage().setOriginY(10);
-        audio.getLabel().setFontScale(1.5f);
+            audio.getImage().setScale(2);
+            audio.getImage().setOriginX(10);
+            audio.getImage().setOriginY(10);
+            audio.getLabel().setFontScale(1.5f);
+        }
 
         ClickListener buttonHandler = new ClickListener() {
 

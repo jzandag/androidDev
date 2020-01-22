@@ -16,12 +16,12 @@ import com.electives.game.tools.B2WorldCreator;
  * Created by Zidrex Andag on 1/16/2020.
  */
 public class Level18 extends ZidPlayScreens implements Screen {
-    private static final int LEVEL_NUMBER = 1;
+    private static final int LEVEL_NUMBER = 18;
 
     public Level18(Elective4 game) {
         super(game);
         // Only changes needed
-        map = new TmxMapLoader().load("map/Level 11 Bed Room.tmx");
+        map = new TmxMapLoader().load("map/Level 18 Temple Room .tmx");
         player = new Player(world,this, 10,13);
     }
 
@@ -36,6 +36,16 @@ public class Level18 extends ZidPlayScreens implements Screen {
     @Override
     public void render(float delta) {
         super.render(delta);
+
+
+        if(player.isDead() || hud.isTimeUp()) {
+            hud.timerStop = true;
+            if (player.stateTimer >= 2) {
+                Elective4.assets.get("audio/illuminati.wav", Music.class).play();
+                System.out.println("Time to move to level screen");
+                game.setScreen(new Level18(game));
+            }
+        }
 
         if(player.isWin()){
             hud.timerStop = true;

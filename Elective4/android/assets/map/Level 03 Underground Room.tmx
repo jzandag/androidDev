@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="-1" width="15" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="32">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="33">
  <tileset firstgid="1" name="ts-basechip" tilewidth="32" tileheight="32" tilecount="1064" columns="8">
   <image source="ts-basechip.png" width="256" height="4256"/>
  </tileset>
- <tileset firstgid="1065" name="gold" tilewidth="32" tileheight="32" tilecount="1" columns="1">
-  <image source="gold.png" width="32" height="32"/>
+ <tileset firstgid="1065" name="ui" tilewidth="32" tileheight="32" tilecount="4" columns="4">
+  <image source="ui.png" width="128" height="32"/>
  </tileset>
  <layer id="8" name="Theme " width="15" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjZmRgYKYQszAyJBCL0fQdIMWePwyjekf1juod6Xqh+hcQg4H6FpBiDy4MALnWMDg=
+   eAFjZmRgYKYQszAyJBCLke0C6jmAzCfE/sOAcOtI16vNgggLbOE2Glb4wwc5zEbDamiFFSjugPl/ATEYGLcLkOOaXDYATbIwYw==
   </data>
  </layer>
  <layer id="10" name="SB" width="15" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjYGBguMlAGiBV/SgYBaNgFAxlAACT+AGz
+   eAFjYGBguAnEpABS1ZNi9qja0RAYDYHREBhsIQAAk/gBsw==
   </data>
  </layer>
  <layer id="9" name="Object" width="15" height="22">
   <data encoding="base64" compression="zlib">
-   eJy9lEkKgDAMRQN6GQ/bZe/jFaRupC56FBtoINZm6MZAcCCv+fmUJAAIC8AF/sT6sz5LzdjevYH1pbEUSegzOrdnD4G/nWzN3aO7Z7PQw8POhMRu6/sbPej9GrHkFa9tPphshq+3Ix8kzZ74k+WeeVnyD2cmzzSW9yD/uIcaa90xjbW09Ozo/tB/a15JpzYv7pCZCGxvxEmWdg7XM5Oo/QFDSnHX
+   eAGdlFEKwjAQRBc8v5/exytI/RH9mKM4T7qwlm2b9sGQTbpDkilkiojrJeLlcVT0P90v6zbXLoegX+5EyeSi25s9lsgLKHm46PyfbCijXKMEr3XP+dYof0TJ20W3R36vozxBZ5BNaA8yWOYlr6FKZlV75xxq28+nv5UI7sx/qvfucsCHziCb0BlkExqlZiab0B6ZHxmQG2gW9ZK6R+ZXM5QNqKPLtvbJEzRKPYtsQkn9lmuMI/ddO+fWfXlDjkC/bEC8IUfIN6eep3tv1tb411+oj3Gq
   </data>
  </layer>
  <objectgroup id="11" name="Wall">

@@ -124,8 +124,8 @@ public class PrologueScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         game.batch.begin();
-        game.batch.draw(background,0,0,stage.getWidth(),stage.getHeight());
-        splash[0].draw(game.batch);
+            game.batch.draw(background,0,0,stage.getWidth(),stage.getHeight());
+            splash[0].draw(game.batch);
         splash[1].draw(game.batch);
         game.batch.end();
 

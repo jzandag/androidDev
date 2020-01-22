@@ -21,9 +21,9 @@ public abstract class MovingObjects extends Sprite {
         setPosition(bounds.getX() / Elective4.PPM + bounds.getWidth() / 2/ Elective4.PPM, bounds.getY()/Elective4.PPM + bounds.getHeight()/2/Elective4.PPM);
         defineEnemy();
         if(count % 2 == 0)
-            velocity = new Vector2(0.5f, 0);
+            velocity = new Vector2(3f, 0);
         else
-            velocity = new Vector2(0, 0.5f);
+            velocity = new Vector2(0, 3f);
         b2body.setActive(false);
     }
 

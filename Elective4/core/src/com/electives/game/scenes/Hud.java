@@ -41,7 +41,7 @@ public class Hud implements Disposable {
 
     public Hud(SpriteBatch sb, int level){
         //define our tracking variables
-        worldTimer = 50;
+        worldTimer = 30;
         timeCount = 0;
         timerStop = false;
 

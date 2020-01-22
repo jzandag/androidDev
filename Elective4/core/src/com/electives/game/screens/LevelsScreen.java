@@ -21,6 +21,22 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.electives.game.Elective4;
 import com.electives.game.levels.Level01;
 import com.electives.game.levels.Level02;
+import com.electives.game.levels.Level03;
+import com.electives.game.levels.Level04;
+import com.electives.game.levels.Level05;
+import com.electives.game.levels.Level06;
+import com.electives.game.levels.Level07;
+import com.electives.game.levels.Level08;
+import com.electives.game.levels.Level09;
+import com.electives.game.levels.Level10;
+import com.electives.game.levels.Level11;
+import com.electives.game.levels.Level12;
+import com.electives.game.levels.Level13;
+import com.electives.game.levels.Level14;
+import com.electives.game.levels.Level15;
+import com.electives.game.levels.Level16;
+import com.electives.game.levels.Level17;
+import com.electives.game.levels.Level18;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
@@ -38,7 +54,7 @@ public class LevelsScreen implements Screen {
     private TextureAtlas atlas;
     private Skin skin;
     private ScrollPane scrollPane;
-    private TextButton playBtn, backBtn;
+    private TextButton backBtn;
 
     private ShapeRenderer rect;
 
@@ -70,7 +86,15 @@ public class LevelsScreen implements Screen {
                 "Level 13","Level 14","Level 15","Level 16","Level 17","Level 18","End","Gago","Ka", "Ba"});
 
         //  Sample
-        ImageTextButton level1 = new ImageTextButton(" Room 1\n Living room",skin,"unlocked");
+        ImageTextButton storyButton = new ImageTextButton(" Prologue",skin,"unlocked");
+        storyButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: Prologue");
+                game.setScreen(new StoryScreen(game));
+            }
+        });
+        ImageTextButton level1 = new ImageTextButton(" Room 1\n Lobby Room",skin,"unlocked");
         level1.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -79,51 +103,163 @@ public class LevelsScreen implements Screen {
             }
         });
 
-        ImageTextButton level2 = new ImageTextButton(" Room 2\n Kitchen Room",skin,"unlocked");
+        ImageTextButton level2 = new ImageTextButton(" Room 2\n Bed Room",skin,"unlocked");
         level2.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Selected level: 1");
+                System.out.println("Selected level: 2");
                 game.setScreen(new Level02(game));
             }
         });
-        ImageTextButton level3 = new ImageTextButton(" Room 3\n Bed Room",skin,"unlocked");
+        ImageTextButton level3 = new ImageTextButton(" Room 3\n Ground Room",skin,"unlocked");
         level3.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Selected level: 1");
-                //game.setScreen(new Level01(game));
+                System.out.println("Selected level: 3");
+                game.setScreen(new Level03(game));
             }
         });
-        ImageTextButton level4 = new ImageTextButton(" Room 4\n Comfort Room",skin,"unlocked");
+        ImageTextButton level4 = new ImageTextButton(" Room 4\n Entrance Room",skin,"unlocked");
+        level4.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 4");
+                game.setScreen(new Level04(game));
+            }
+        });
 
-        ImageTextButton level5 = new ImageTextButton(" Room 5\n Dining Room",skin,"unlocked");
+        ImageTextButton level5 = new ImageTextButton(" Room 5\n Mountain Room",skin,"unlocked");
+        level5.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 5");
+                game.setScreen(new Level05(game));
+            }
+        });
 
-        ImageTextButton level6 = new ImageTextButton(" Room 6\n Library Room",skin,"unlocked");
+        ImageTextButton level6 = new ImageTextButton(" Room 6\n Dessert Room",skin,"unlocked");
+        level6.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 6");
+                game.setScreen(new Level06(game));
+            }
+        });
 
-        ImageTextButton level7 = new ImageTextButton(" Room 7\n Operating Room",skin,"unlocked");
+        ImageTextButton level7 = new ImageTextButton(" Room 7\n Living Room",skin,"unlocked");
+        level7.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 7");
+                game.setScreen(new Level07(game));
+            }
+        });
 
-        ImageTextButton level8 = new ImageTextButton(" Room 8\n Court Room",skin,"unlocked");
+        ImageTextButton level8 = new ImageTextButton(" Room 8\n Comfort Room",skin,"unlocked");
+        level8.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 8");
+                game.setScreen(new Level08(game));
+            }
+        });
 
-        ImageTextButton level9 = new ImageTextButton(" Room 9\n Tool Room",skin,"unlocked");
+        ImageTextButton level9 = new ImageTextButton(" Room 9\n Farm Room",skin,"unlocked");
+        level9.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 9");
+                game.setScreen(new Level09(game));
+            }
+        });
 
-        ImageTextButton level10 = new ImageTextButton(" Room 10\n Play Room",skin,"unlocked");
 
-        ImageTextButton level11 = new ImageTextButton(" Room 11\n Class Room",skin,"unlocked");
+        ImageTextButton level10 = new ImageTextButton(" Room 10\n Sewage Room",skin,"unlocked");
+        level10.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 10");
+                game.setScreen(new Level10(game));
+            }
+        });
 
-        ImageTextButton level12 = new ImageTextButton(" Room 12\n Snow Room",skin,"unlocked");
+        ImageTextButton level11 = new ImageTextButton(" Room 11\n Meditation Room",skin,"unlocked");
+        level11.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 11");
+                game.setScreen(new Level11(game));
+            }
+        });
 
-        ImageTextButton level13 = new ImageTextButton(" Room 13\n Lake Room",skin,"unlocked");
+        ImageTextButton level12 = new ImageTextButton(" Room 12\n Campsite Room",skin,"unlocked");
+        level12.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 12");
+                game.setScreen(new Level12(game));
+            }
+        });
 
-        ImageTextButton level14 = new ImageTextButton(" Room 14\n Water Room",skin,"unlocked");
+        ImageTextButton level13 = new ImageTextButton(" Room 13\n Dining Room",skin,"unlocked");
+        level13.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 13");
+                game.setScreen(new Level13(game));
+            }
+        });
 
-        ImageTextButton level15 = new ImageTextButton(" Room 15\n Sand Room",skin,"unlocked");
+        ImageTextButton level14 = new ImageTextButton(" Room 14\n Forest Room",skin,"unlocked");
+        level14.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 14");
+                game.setScreen(new Level14(game));
+            }
+        });
+        ImageTextButton level15 = new ImageTextButton(" Room 15\n Road Room",skin,"unlocked");
+        level15.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 15");
+                game.setScreen(new Level15(game));
+            }
+        });
+        ImageTextButton level16 = new ImageTextButton(" Room 16\n Storage Room",skin,"unlocked");
+        level16.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 16");
+                game.setScreen(new Level16(game));
+            }
+        });
 
-        ImageTextButton level16 = new ImageTextButton(" Room 16\n Fire Room",skin,"unlocked");
+        ImageTextButton level17 = new ImageTextButton(" Room 17\n Port Room",skin,"unlocked");
+        level17.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 17");
+                game.setScreen(new Level17(game));
+            }
+        });
 
-        ImageTextButton level17 = new ImageTextButton(" Room 17\n Hell Room",skin,"unlocked");
-
-        ImageTextButton level18 = new ImageTextButton(" Room 18\n Dead Room",skin,"unlocked");
+        ImageTextButton level18 = new ImageTextButton(" Room 18\n Temple Room",skin,"unlocked");
+        level18.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: 18");
+                game.setScreen(new Level18(game));
+            }
+        });
+        ImageTextButton epilogue = new ImageTextButton(" Epilogue",skin,"unlocked");
+        epilogue.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Selected level: Prologue");
+                game.setScreen(new EpilogueScreen(game));
+            }
+        });
 
         ImageTextButton locked2 = new ImageTextButton(" Room 2\n LOCKED",skin,"locked");
         ImageTextButton locked3 = new ImageTextButton(" Room 3\n LOCKED",skin,"locked");
@@ -144,6 +280,7 @@ public class LevelsScreen implements Screen {
         ImageTextButton locked18 = new ImageTextButton(" Room 18\n LOCKED",skin,"locked");
 
         Table scrollTable = new Table();
+        scrollTable.add(storyButton).spaceBottom(20).row();
         scrollTable.add(level1).spaceBottom(20).row();
         if(isLocked(2)) scrollTable.add(locked2).spaceBottom(20).row(); else scrollTable.add(level2).spaceBottom(20).row();
         if(isLocked(3)) scrollTable.add(locked3).spaceBottom(20).row(); else scrollTable.add(level3).spaceBottom(20).row();
@@ -162,6 +299,7 @@ public class LevelsScreen implements Screen {
         if(isLocked(16)) scrollTable.add(locked16).spaceBottom(20).row(); else scrollTable.add(level16).spaceBottom(20).row();
         if(isLocked(17)) scrollTable.add(locked17).spaceBottom(20).row(); else scrollTable.add(level17).spaceBottom(20).row();
         if(isLocked(18)) scrollTable.add(locked18).spaceBottom(20).row(); else scrollTable.add(level18).spaceBottom(20).row();
+        scrollTable.add(epilogue).spaceBottom(20).row();
         //
         scrollPane = new ScrollPane(scrollTable,skin);
 
@@ -203,7 +341,7 @@ public class LevelsScreen implements Screen {
         //putting stuff together
         //table.debug();
         table.add();
-        table.add("SELECT LEVEL").colspan(2);
+        table.add("SELECT ROOM").colspan(2);
         table.add().row();
         table.add(scrollPane).colspan(4).center().expandY().row();
         table.add();/*

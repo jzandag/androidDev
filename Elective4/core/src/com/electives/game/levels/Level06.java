@@ -21,7 +21,7 @@ public class Level06 extends ZidPlayScreens implements Screen {
     public Level06(Elective4 game) {
         super(game);
         // Only changes needed
-        map = new TmxMapLoader().load("map/Level 11 Bed Room.tmx");
+        map = new TmxMapLoader().load("map/Level 06 Dessert Room.tmx");
         player = new Player(world,this, 10,13);
     }
 
@@ -37,6 +37,14 @@ public class Level06 extends ZidPlayScreens implements Screen {
     public void render(float delta) {
         super.render(delta);
 
+        if(player.isDead() || hud.isTimeUp()) {
+            hud.timerStop = true;
+            if (player.stateTimer >= 2) {
+                Elective4.assets.get("audio/illuminati.wav", Music.class).play();
+                System.out.println("Time to move to level screen");
+                game.setScreen(new Level06(game));
+            }
+        }
         if(player.isWin()){
             hud.timerStop = true;
             Elective4.assets.get("audio/illuminati.wav", Music.class).stop();

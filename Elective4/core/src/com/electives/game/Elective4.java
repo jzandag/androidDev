@@ -6,17 +6,15 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.electives.game.screens.MainMenuScreen;
-import com.electives.game.screens.PlayScreen;
+import com.electives.game.screens.LevelsScreen;
 import com.electives.game.screens.PrologueScreen;
-import com.electives.game.screens.StoryScreen;
 
 public class Elective4 extends Game {
 
-	public static final String TITLE = "Escape Room";
+    public static final String TITLE = "Escape Room";
 	public static final String VERSION = "v0.0.0.0reallyEarly";
-	public static final int GAME_WIDTH = 480;
-	public static final int GAME_HEIGHT = 700;
+    public static final int GAME_WIDTH = 480;
+    public static final int GAME_HEIGHT = 700;
 	public static final float PPM = 100;
 
 	public static final short NOTHING_BIT = 0;
@@ -65,7 +63,7 @@ public class Elective4 extends Game {
 		music.setVolume(0.4f);
 		music.play();
 		assets.get("audio/gunShot.wav", Sound.class).play();
-		setScreen(new PrologueScreen(this));
+		setScreen(new LevelsScreen(this));
 
 
 	}

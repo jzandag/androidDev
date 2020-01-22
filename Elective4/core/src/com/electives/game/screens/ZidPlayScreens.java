@@ -121,14 +121,6 @@ public class ZidPlayScreens {
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
-        if(player.isDead() || hud.isTimeUp()) {
-            hud.timerStop = true;
-            if (player.stateTimer >= 2) {
-                Elective4.assets.get("audio/illuminati.wav", Music.class).play();
-                System.out.println("Time to move to level screen");
-                game.setScreen(new LevelsScreen(game));
-            }
-        }
 
 
     }
